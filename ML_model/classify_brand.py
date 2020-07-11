@@ -13,7 +13,13 @@ epochs = 1
 
 # These class names map to the integer labels based on item position in list.
 # Examples: 0 -> 'companyA', 1 -> 'companyB'. Also see labels below.
-class_names = ['greenwashed_company', 'sustainable_company', 'company']
+class_names = [
+    'greenwashed_company',
+    'sustainable_company',
+    'companyA',
+    'companyB',
+    'companyC'
+]
 
 # Specify image files and labels and parse into datasets
 fnames_train = tf.constant(['data/train_brands/1_bad-company-logo_scaled.jpg',
@@ -88,10 +94,17 @@ print(model.evaluate(ds_test, verbose=2))
 # model.save('classify_brand')
 
 # Convert the model.
-converter = tf.lite.TFLiteConverter.from_keras_model(model)
-converter.optimizations = [tf.lite.Optimize.DEFAULT]
-tflite_model = converter.convert()
+#converter = tf.lite.TFLiteConverter.from_keras_model(model)
+#converter.optimizations = [tf.lite.Optimize.DEFAULT]
+#tflite_model = converter.convert()
 
 # Save the TF Lite model.
-with tf.io.gfile.GFile('../assets/classify_brand.tflite', 'wb') as f:
-    f.write(tflite_model)
+#with tf.io.gfile.GFile('../assets/classify_brand.tflite', 'wb') as f:
+#    f.write(tflite_model)
+
+# Create labels.txt to go along with the TF Lite model
+if os.path.exists('../assets/labels.txt'):
+    os.remove('../assets/labels.txt')
+with open('../assets/labels.txt', 'a') as file:
+    for it, label in enumerate(class_names):
+        file.write(f'{it} {label}\n')
