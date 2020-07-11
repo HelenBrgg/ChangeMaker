@@ -8,7 +8,7 @@ class ImageBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-      
+      color: _color,
       ),
       child: Text('Hi'),
     );
