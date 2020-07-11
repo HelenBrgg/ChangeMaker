@@ -13,9 +13,7 @@ class CompanyDetail extends StatelessWidget {
           crossAxisAlignment:CrossAxisAlignment.stretch,
           children: [
             ImageBanner("assets/images/1_bad-company-logo_scaled.jpg"),
-            TextSection(Colors.red),
-            TextSection(Colors.green),
-            TextSection(Colors.blue),
+            TextSection("header","body"),
           ],
         ));
   }

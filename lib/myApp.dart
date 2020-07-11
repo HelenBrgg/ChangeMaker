@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
             body: Center(
               child: MyImagePicker()
               )
-            )
+            ),
+        theme: ThemeData(appBarTheme: AppBarTheme(textTheme: TextTheme(title:AppBarTextStyle)))
           );
   }
   }

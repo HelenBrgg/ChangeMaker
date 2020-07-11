@@ -7,10 +7,11 @@ class ImageBanner extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-      color: _color,
+      constraints:BoxConstraints.expand(height: 300.0),
+      decoration:BoxDecoration(color:Colors.grey),
+      child: Image.asset(_assetPath,
+      fit: BoxFit.cover,
       ),
-      child: Text('Hi'),
     );
   }
 }
