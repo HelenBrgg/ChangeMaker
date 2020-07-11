@@ -9,7 +9,7 @@ import os
 # Defining some parameters for the training
 batch_size = 5
 num_classes = 5
-epochs = 50
+epochs = 1
 
 # These class names map to the integer labels based on item position in list.
 # Examples: 0 -> 'companyA', 1 -> 'companyB'. Also see labels below.
@@ -93,5 +93,5 @@ converter.optimizations = [tf.lite.Optimize.DEFAULT]
 tflite_model = converter.convert()
 
 # Save the TF Lite model.
-with tf.io.gfile.GFile('classify_brand.tflite', 'wb') as f:
+with tf.io.gfile.GFile('../assets/classify_brand.tflite', 'wb') as f:
     f.write(tflite_model)
