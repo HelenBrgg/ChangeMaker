@@ -36,7 +36,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-assets:
+  assets:
     - assets/labels.txt
     - assets/classify_brand.tflite
 
