@@ -7,19 +7,27 @@ import os
 # tf.debugging.set_log_device_placement(True)
 
 # Defining some parameters for the training
-batch_size = 1
-num_classes = 2
-epochs = 1
+batch_size = 5
+num_classes = 5
+epochs = 50
 
 # These class names map to the integer labels based on item position in list.
 # Examples: 0 -> 'companyA', 1 -> 'companyB'. Also see labels below.
-class_names = ['companyA', 'companyB']
+class_names = ['greenwashed_company', 'sustainable_company', 'company']
 
-# Specify image files and labels and parse into dataset
-fnames_train = tf.constant(['data/train/companyA_000001.jpeg',
-                           'data/train/companyB_000001.jpeg'])
-labels_train = tf.constant([0, 1])
+# Specify image files and labels and parse into datasets
+fnames_train = tf.constant(['data/train_brands/1_bad-company-logo_scaled.jpg',
+                            'data/train_brands/2_good-company-logo_scaled.jpg',
+                            'data/train_brands/3_background-company-logo_scaled.jpg',
+                            'data/train_brands/4_background-company-logo_scaled.jpg',
+                            'data/train_brands/5_background-company-logo_scaled.jpg'])
+labels_train = tf.constant([0, 1, 2, 3, 4])
 ds_train = tf.data.Dataset.from_tensor_slices((fnames_train, labels_train))
+
+fnames_test = tf.constant(['data/test_brands/1_bad-company-logo_scaled.jpg',
+                          'data/test_brands/2_good-company-logo_scaled.jpg'])
+labels_test = tf.constant([0, 1])
+ds_test = tf.data.Dataset.from_tensor_slices((fnames_test, labels_test))
 
 
 def _parse_image(filename, label):
@@ -32,6 +40,9 @@ def _parse_image(filename, label):
 
 ds_train = ds_train.map(_parse_image)
 ds_train = ds_train.batch(batch_size)
+
+ds_test = ds_test.map(_parse_image)
+ds_test = ds_test.batch(2)
 
 # Design the model
 model = tf.keras.models.Sequential([
@@ -71,7 +82,7 @@ model.fit(ds_train,
           batch_size=batch_size,
           epochs=epochs)
 
-# model.evaluate(x_test,  y_test, verbose=2)
+print(model.evaluate(ds_test, verbose=2))
 # model.predict()
 
 # model.save('classify_brand')
