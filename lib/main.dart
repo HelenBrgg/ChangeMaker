@@ -25,11 +25,12 @@ class MyApp extends StatelessWidget {
   MyImagePickerState createState() => MyImagePickerState();
 }
 class MyImagePickerState extends State {
-  File imageURI;
+File imageURI;
 String result;
 String path;
 
 Future getImageFromGallery() async {
+
   var image = await ImagePicker.pickImage(source: ImageSource.gallery);
   setState(() {
     imageURI = image;
