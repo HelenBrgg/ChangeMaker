@@ -94,13 +94,13 @@ print(model.evaluate(ds_test, verbose=2))
 # model.save('classify_brand')
 
 # Convert the model.
-#converter = tf.lite.TFLiteConverter.from_keras_model(model)
-#converter.optimizations = [tf.lite.Optimize.DEFAULT]
-#tflite_model = converter.convert()
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
+tflite_model = converter.convert()
 
 # Save the TF Lite model.
-#with tf.io.gfile.GFile('../assets/classify_brand.tflite', 'wb') as f:
-#    f.write(tflite_model)
+with tf.io.gfile.GFile('../assets/classify_brand.tflite', 'wb') as f:
+    f.write(tflite_model)
 
 # Create labels.txt to go along with the TF Lite model
 if os.path.exists('../assets/labels.txt'):
