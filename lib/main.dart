@@ -38,7 +38,7 @@ Future getImageFromGallery() async {
   });
 }
 Future classifyImage() async {
-  await Tflite.loadModel(model: "assets/model_unquant.tflite",labels: "assets/labels.txt");
+  await Tflite.loadModel(model: "assets/classify_brand.tflite",labels: "assets/labels.txt");
   var output = await Tflite.runModelOnImage(path: path);
   setState(() {
     result = output.toString();
