@@ -1,5 +1,0 @@
-0 greenwashed_company
-1 sustainable_company
-2 companyA
-3 companyB
-4 companyC
