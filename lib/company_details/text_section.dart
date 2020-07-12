@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
+
 class TextSection extends StatelessWidget {
   final String _title;
-  final Icon _icon;
   final String _body;
   static const double _hPad=16.0;
 
-  TextSection(this._title,this._body);
+  TextSection(this._title, this._body);
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -14,15 +14,14 @@ class TextSection extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.fromLTRB(_hPad,32.0,_hPad,4.0),
-        child: Text(_title),),
-        
+        child: Text(_title, style: Theme.of(context).textTheme.title),),
         Container(
           padding: const EdgeInsets.fromLTRB(_hPad,10.0,_hPad,_hPad),
-        child: Icon(_icon),),
+        child: new Icon(Icons.remove_circle, color: Colors.black, size: 50),),
         Container(
           padding: const EdgeInsets.fromLTRB(_hPad,10.0,_hPad,_hPad),
-        child: Text(_body),style: TextStyle()),
-        ]
+        child: Text(_body,style: Theme.of(context).textTheme.body1),)
+        ],
     );
     
   }
