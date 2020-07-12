@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'image_banner.dart';
 import 'text_section.dart';
 
+
+
+
 class CompanyDetail extends StatelessWidget {
+  
+
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -13,7 +19,7 @@ class CompanyDetail extends StatelessWidget {
           crossAxisAlignment:CrossAxisAlignment.stretch,
           children: [
             ImageBanner("assets/images/1_bad-company-logo_scaled.jpg"),
-            TextSection("header","body"),
+            TextSection("RVVE","You caught this company doing greenwashing... what a shame"),
           ],
         ));
   }
