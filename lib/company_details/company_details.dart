@@ -5,8 +5,6 @@ import 'image_banner.dart';
 import 'text_section.dart';
 
 
-
-
 class CompanyDetail extends StatelessWidget {
   final int _company;
   final String _imagePath;
